@@ -139,10 +139,14 @@ export default {
     endSelfPacedReading(trial){
       this.$magpie.measurements.type = trial.type;
       this.$magpie.measurements.ID = trial.ID;
+      this.$magpie.measurements.ID = trial.ID;
+      this.$magpie.measurements.context_type = trial.context_type;
       this.$magpie.measurements.context = trial.context;
       this.$magpie.measurements.RT_context = this.RT[0];
+      this.$magpie.measurements.trigger_type = trial.trigger_type;
       this.$magpie.measurements.trigger = trial.trigger;
       this.$magpie.measurements.RT_trigger = this.RT[1];
+      this.$magpie.measurements.continuation_type = trial.continuation_type;
       this.$magpie.measurements.continuation = trial.continuation;
       this.$magpie.measurements.RT_continuation = this.RT[2];
       console.log(trial.ID)

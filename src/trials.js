@@ -1587,6 +1587,7 @@ const practice_trial_info = [
     return {
       type: "main",
       knowledge: args.context_type,
+      context_type: args.context_type,
       trigger_type: args.trigger_type,
       continuation_type: args.trigger_type.concat("-", args.continuation_type),
       context: trial.context[args.context_type],
