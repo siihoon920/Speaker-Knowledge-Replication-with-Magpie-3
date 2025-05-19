@@ -1,0 +1,10 @@
+node_modules
+!node_modules/magpie-base/
+!node_modules/magpie-base/src/
+!node_modules/magpie-base/src/components/
+!node_modules/magpie-base/src/components/screens/
+!node_modules/magpie-base/src/components/screens/DebugResultsScreen.vue
+vue.config.js
+package.json
+package-lock.json
+stylelint.config.js
