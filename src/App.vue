@@ -17,7 +17,7 @@
       <Screen title="Are You a Bot?">
         <p>{{speaker}} says to {{listener}}: It's a beautiful day, isn't it?</p>
         <p>Who is {{speaker}} talking to?</p>
-        <p>botCaptcha_response enter your answer in lower case.</p>
+        <p>enter your answer in lower case.</p>
         <TextareaInput :response.sync="botCaptcha_response" />
         <button @click="(botCaptcha_response.toLowerCase()==listener.toLowerCase() && botCaptcha_count<3)?$magpie.nextScreen():iterBotCaptcha(botCaptcha_response)">next</button>
         <p>{{botCaptcha_instruction[botCaptcha_count]}}</p>
@@ -26,7 +26,9 @@
       
       <Screen v-for="(trial,i) in practice_trial_info">
         <Slide>
-          <p>{{$magpie.currentScreenIndex}}</p>
+          <br/>
+          <br/>
+          <br/>
           <SelfPacedReadingInput_SpeakerKnowledge
             :context="trial.context.split('|')"
             :triggersentence="trial.trigger.split('|')"
@@ -38,9 +40,11 @@
         </Slide>
 
         <Slide>
-          <p>{{$magpie.currentScreenIndex}}</p>
-
+          <br/>
+          <br/>
+          <br/>
           <p>{{trial.question}}</p>
+          <br/>
           <ForcedChoiceInput
             :options="[trial.option1, trial.option2]"
             :question="trial.question"
@@ -64,7 +68,9 @@
 
 
         <Slide>
-          <p>{{$magpie.currentScreenIndex}}</p>
+          <br/>
+          <br/>
+          <br/>
           <SelfPacedReadingInput_SpeakerKnowledge
             :context="trial.context.split('|')"
             :triggersentence="trial.trigger.split('|')"
@@ -75,7 +81,11 @@
           />
         </Slide>
         <Slide>
+          <br/>
+          <br/>
+          <br/>
           <p>{{trial.question}}</p>
+          <br/>
           <ForcedChoiceInput
           :options="['Yes', 'No']"
           :response.sync="answer"
@@ -149,7 +159,6 @@ export default {
       this.$magpie.measurements.continuation_type = trial.continuation_type;
       this.$magpie.measurements.continuation = trial.continuation;
       this.$magpie.measurements.RT_continuation = this.RT[2];
-      console.log(trial.ID)
       this.$magpie.nextSlide();
     },
     endForcedChoice(trial){
@@ -159,8 +168,6 @@ export default {
     },
     iterBotCaptcha(botCaptcha_response){
       this.botCaptcha_count+=1;
-      console.log('response',botCaptcha_response);
-      console.log('listener:',this.listener);
     }
   }
 };

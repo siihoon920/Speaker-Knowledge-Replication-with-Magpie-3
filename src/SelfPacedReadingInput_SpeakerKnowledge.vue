@@ -13,7 +13,7 @@
             <template v-if="timeout">
               <TimerStop
                 id="responseTime"
-                @update:time="RT[sentenceCount].push($event); console.log('sentenceCount:', sentenceCount, 'TimerStop updated RT:', RT);"
+                @update:time="RT[sentenceCount].push($event);"
               />
               <Wait :time="0" @done="end" />
             </template>
@@ -41,7 +41,7 @@
               <Wait
                 v-if="responseTimeLimit !== -1 && i > 1"
                 :time="responseTimeLimit"
-                @done="() => {timeout = true; console.log('Timeout occurred');}"
+                @done="() => {timeout = true;}"
               />
               <div
                 :class="{
@@ -64,13 +64,7 @@
                   </span>
                 </template>
               </div>
-              <span>{{  `sentenceCount: ${sentenceCount},  wordCount: ${wordCount}` }}</span>
-              <span>
-                <br/>
-              </span>
-              <span>
-                {{RT}}
-              </span>
+              
   
             </template>
           </template>
@@ -109,26 +103,21 @@
       },
       computed: {
         chunks() {
-          console.log('Computed chunks:', [...this.context, ...this.triggersentence, ...this.continuation]);
           return [...this.context, ...this.triggersentence, ...this.continuation];
         },
         sentences() {
-          console.log('Computed sentences:', [this.context, this.triggersentence, this.continuation]);
           return [this.context, this.triggersentence, this.continuation];
         }
       },
       methods: {
         wordCountIter() {
           this.wordCount++;
-          console.log('After incrementing, wordCount:', this.wordCount);
         },
         sentenceCountIter() {
           this.sentenceCount++;
-          console.log('After incrementing, sentenceCount:', this.sentenceCount);
         },
         wordCountReset() {
           this.wordCount = 1;
-          console.log('Resetting wordCount to 1');
         },
         end() {
           this.$emit('update:response-times', this.RT);
@@ -137,12 +126,9 @@
         },
         timerStop(){
           this.RT[this.sentenceCount].push($event);
-          console.log('sentenceCount:', this.sentenceCount, 'TimerStop updated RT:', this.RT);
           this.wordCountIter();
-          console.log('Current wordCount:', this.timerStop.wordCount, 'chunks.length:', this.chunks.length);
           this.i > this.chunks.length ? next() : null;
           if (this.wordCount > this.sentences[this.sentenceCount].length) {
-            console.log('Moving to next sentence');
             this.sentenceCountIter();
             this.wordCountReset();
           }
