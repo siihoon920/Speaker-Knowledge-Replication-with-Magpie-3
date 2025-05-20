@@ -1,9 +1,10 @@
-# internship2
+# Speaker Knowledge Replication with Magpie-3
 
-This is a sample experiment using magpie.
+This is a replication of [this experiment about speaker knowledge by Bergen & Grodner (2012)](https://psycnet.apa.org/record/2012-10772-001) using magpie 3.
+
+Since this is an online version unlike the original, the experiment was modeled after a previous replication with magpie2, [magpie speaker knowledge](https://github.com/magpie-ea/magpie-speaker-knowledge)
+
 ### Setup
-
-First, set up the project with `npm install`
 
 To run the project locally, run `npm run serve`
 
@@ -25,3 +26,5 @@ $ npm update magpie-base
 
 Read more on [maintaining npm dependencies](https://www.carlrippon.com/upgrading-npm-dependencies/).
 
+## differences with official magpie 3
+In this version, the file `node_modules/magpie-base/src/components/screens/DebugResultsScreen.vue` was modified to fix a bug.
