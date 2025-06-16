@@ -185,7 +185,27 @@ In the practic trials, the screen does not skip to the main trials even if the p
 the answers to questions with universal quantifier vary by complement type. But in the previous version,  correct answer was uniformly assigned, which was false. The variation is taken into account in this project, making sure comprehension can be better evaluated.
 
 
+# edit 
+24 
 
+- S1 : 8
+  - yes : 4
+  - no : 4
+- S2 : 8
+  - systematic : 4
+    - existential quantifier
+    - negated universal quantifier
+  - miscellaneous : 4
+    -  yes : 2
+    -  no : 2
+-  S3 : 8
+   -  systematic : 4
+      -  existential: 2
+      -  negated_universal quantifier: 2
+   -  miscellaneous : 4
+      - yes : 2
+      - no : 2
+  
 
 
 

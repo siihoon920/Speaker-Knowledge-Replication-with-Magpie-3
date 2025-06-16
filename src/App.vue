@@ -24,7 +24,7 @@
       </Screen>
 
       
-      <Screen v-for="(trial,i) in practice_trial_info">
+      <Screen v-for="(trial,i) in practice_trials">
         <Slide>
           <br/>
           <br/>
@@ -108,7 +108,7 @@
 
 <script>
 import _ from 'lodash';
-import {practice_trial_info, main_trials} from './trials.js';
+import {practice_trials, main_trials} from './trials.js';
 import SelfPacedReadingInput_SpeakerKnowledge from './SelfPacedReadingInput_SpeakerKnowledge.vue';
 import DebugResultsScreen from 'magpie-base/src/components/screens/DebugResultsScreen.vue';
 import SubmitResultsScreen from 'magpie-base/src/components/screens/SubmitResultsScreen.vue';
@@ -127,7 +127,7 @@ export default {
       botCaptcha_count:0,
       speaker: _.sample(['James', 'John', "Robert", "Michael", "William", "David", "Richard", "Joseph", "Thomas", "Charles"]),
       listener: _.sample(["Mary", "Patricia", "Jennifer", "Linda", "Elizabeth", "Barbara", "Susan", "Jessica", "Sarah", "Margaret"]),
-      practice_trial_info,
+      practice_trials,
       main_trials,
       RT : [],
       answer : 'unavailable',
@@ -149,7 +149,6 @@ export default {
     endSelfPacedReading(trial){
       this.$magpie.measurements.type = trial.type;
       this.$magpie.measurements.ID = trial.ID;
-      this.$magpie.measurements.ID = trial.ID;
       this.$magpie.measurements.context_type = trial.context_type;
       this.$magpie.measurements.context = trial.context;
       this.$magpie.measurements.RT_context = this.RT[0];
@@ -162,6 +161,7 @@ export default {
       this.$magpie.nextSlide();
     },
     endForcedChoice(trial){
+      this.$magpie.measurements.question_type = trial.question_type;
       this.$magpie.measurements.question = trial.question;
       this.$magpie.measurements.correct_answer = trial.correct_answer;
       this.$magpie.measurements.answer = this.answer
