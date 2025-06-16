@@ -1,12 +1,15 @@
-
 name: Build and Deploy
+
 on:
   push:
     branches:
       - participant_mode
+
+permissions:
+  contents: write
+
 jobs:
   build-and-deploy:
-
     strategy:
       max-parallel: 1
       matrix:
@@ -14,6 +17,7 @@ jobs:
           - ./
 
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout 🛎️
         uses: actions/checkout@v2.3.1
@@ -22,7 +26,7 @@ jobs:
         uses: skjnldsv/read-package-engines-version-actions@v1.1
         id: versions
         with:
-          path: ${{matrix.folder}}
+          path: ${{ matrix.folder }}
           fallbackNode: '^12'
           fallbackNpm: '^6'
 
@@ -39,7 +43,7 @@ jobs:
         env:
           cache-name: cache-node-modules
         with:
-          path: ~/.npm # npm cache files are stored in `~/.npm` on Linux/macOS
+          path: ~/.npm
           key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-build-${{ env.cache-name }}-
@@ -50,7 +54,7 @@ jobs:
         env:
           REPO_NAME: ${{ github.event.repository.name }}
         run: |
-          cd ${{matrix.folder}}
+          cd ${{ matrix.folder }}
           npm install
           npm run build
 
