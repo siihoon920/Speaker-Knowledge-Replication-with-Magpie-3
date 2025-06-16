@@ -3,7 +3,7 @@ name: Build and Deploy
 on:
   push:
     branches:
-      - participant-mode
+      - participant_mode
 jobs:
   build-and-deploy:
 
