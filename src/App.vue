@@ -64,9 +64,7 @@
 
       
 
-      <Screen v-for="(trial,i) in main_trials" :progress="i/34">
-
-
+      <Screen v-for="(trial,i) in main_trials" :progress="i/72">
         <Slide>
           <br/>
           <br/>

@@ -34,7 +34,7 @@
           <TimerStart v-if="i >= 0" id="responseTime" />
           <KeypressInput
             :keys="{ [trigger]: instructions }"
-            :show-options="showKeypressOptions"
+            :show-options="false"
             @update:response="next"
           />
           <Wait
@@ -46,6 +46,7 @@
               }
             "
           />
+          <span> Press SPACE to reveal the next phrase </span>
           <div
             :class="{
               text: true,
@@ -53,7 +54,7 @@
               'underline-sentence': underline === 'sentence',
               'show-all': wordPos === 'next'
             }"
-          >
+          > 
             <template v-for="(sentence, sentenceIndex) in sentences">
               <span
                 v-for="(word, wordIndex) in sentence"
@@ -91,7 +92,7 @@ export default {
     context: { type: Array, required: true },
     triggersentence: { type: Array, required: true },
     continuation: { type: Array, required: true },
-    instructions: { type: String, default: 'Press SPACE to reveal the words.' },
+    instructions: { type: String, default: ' ' },
     trigger: { type: String, default: ' ' },
     underline: { type: String, default: 'none' },
     wordPos: { type: String, default: 'next' },
