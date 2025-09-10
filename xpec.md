@@ -7,12 +7,12 @@ while it has been shown that implicature interpretation depends on many grammati
 
 # Material 
 
-## real trials
+## critical trials
 
-we use 24 situations in which 3 binary factors below can vary:   
+we use 24 paragraphs in which 3 binary factors below can vary:   
 
 - context type about the certainty level of speaker knowledge(full or partial)
-- type of trigger( scalar trigger vs focused trigger)
+- type of trigger(scalar trigger vs focused trigger)
 - type of continuation (complement vs cancelation)  
 
 ### sentences for self paced reading 
