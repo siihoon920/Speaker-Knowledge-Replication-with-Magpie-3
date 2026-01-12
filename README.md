@@ -9,23 +9,32 @@ Since this is an online version unlike the original, the experiment was modeled 
 click [here](https://siihoon920.github.io/Speaker-Knowledge-Replication-with-Magpie-3/).
 ## To run locally ...
 
-Given the following are installed,
+### Requirements
 
-- Node.js v18.x
-- npm v8 or later
-  
-Go to directory of your choice and run
-```
-npx magpie-base@latest new "project-name"
+* Node.js v18.x
+* npm v8 or later
 
-```
-and then 
-```
+### Installation
+
+```bash
+# 1. Clone the repository
+git clone <this-repo>
+cd <this-repo>
+
+# 2. Install dependencies (including magpie-base)
 npm install
 ```
-finally 
-```
+
+#### Run the development server
+
+```bash
 npm run serve
+```
+
+Then open the app in your browser at:
+
+```
+http://localhost:8080/
 ```
 
 ## differences from official magpie 3
