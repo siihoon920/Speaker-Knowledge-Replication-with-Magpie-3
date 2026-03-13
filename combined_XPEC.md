@@ -59,15 +59,15 @@ The critical trials in this experiment aim to measure how the listener's judgmen
 
 - **Context sentence**: 'Carefully inspecting' the shipment sets the context that the speaker has full knowledge of the situation, while 'helping unload' the shipment sets the context that the speaker has partial knowledge of the situation.
 
-- **Trigger sentence**: 'Some of the gold watches' triggers participants to make a strong or weak implicature, while 'only some of the gold watches' makes the strong implicature 'some but not all' an explicit truth.
+- **Trigger sentence**: 'Some of the gold watches' triggers participants to make a chioce between the strong or weak implicature, while 'only some of the gold watches' triggers the strong implicature exclusively('some but not all')
 
-- **Continuation sentence**: 'The rest were real' confirms the strong implicature 'some but not all', while 'they all were fakes' cancels the strong implicature.
+- **Continuation sentence**: 'The rest were real' confirms the strong implicature ('some but not all'), while 'they all were fakes' cancels the strong implicature.
 
 - **Comprehension question (universal quantifier)**: If the continuation sentence type is 'complement', then the correct answer is 'no'. If 'cancellation*', the correct answer is 'yes'.
 
 ### Trial Generation
 
-We have 24 situations, with S1, S2, and S3 sentences in two versions. We generate each trial using the possible factor combinations of sentence versions shown below (A - F). The combinations with a focused trigger and a cancellation continuation are excluded because they result in a logical contradiction. For example, in the case of "Only some of the watches were fake … In fact, they all were fake.", the cancellation directly contradicts the focused trigger, which makes the implicature completely uninformative. Including such items would undermine the purpose of studying the process of implicature generation.
+We have 24 situations, with S1, S2, and S3 sentences in two versions. We generate each trial using the possible factor combinations of sentence versions shown below (A - F). The combinations with a focused trigger and a cancellation continuation are excluded because they result in a logical contradiction (e.g., "Only some were fake... In fact, they all were fake"). Including such items would undermine the purpose of studying the process of implicature generation.
 
 | Code | Context | Trigger | Continuation |
 | :--: | :------ | :------ | :----------- |
@@ -78,7 +78,7 @@ We have 24 situations, with S1, S2, and S3 sentences in two versions. We generat
 | E    | partial | scalar  | cancellation |
 | F    | partial | focused | complement   |
 
-If we generated trials for each participant by assigning a random combination to each situation, we could potentially end up with certain situations being matched significantly more often with some factor combinations than others. Therefore, we use a Latin square to ensure that the matches between factor combinations and situations are balanced across participants. We create 6 permutations of the combinations above in a row, forming a matrix in which no combination appears in the same position within a row more than once. Then, 4 rows are chosen randomly from the Latin square, yielding a list of 24 factor combinations to match with each situation.
+If we generated trials for each participant by assigning a random combination to each situation, we could potentially end up with certain situations being matched significantly more often with some factor combinations than others. Therefore, we use a Latin square to ensure that the matches between factor combinations and situations are balanced across participants. By randomly selecting 4 rows from this square, we yield exactly 24 condition assignments (4 of each condition A-F). These are then mapped 1-to-1 against our 24 situations.
 
 **latin square used:**
 
@@ -95,38 +95,41 @@ B F E A C D
 
 C E D B A F / D C A E F B / A B F D E C / F A B C D E
 
-### Comprehension Questions (original)
+### Comprehension Questions 
 
-The comprehension questions test the participant's understanding of the scalar statement after each trial. Each question follows one of the following formats, and the correct answer to each format varies systematically by continuation sentence type.
+In the previous replication, all of the comprehension questions were about the scalar expression in S2 or how its ambiguity resolves in S3. Consequently, the correct answer became clear in either S2 (in the case of existential quantifier 'some' or negated existential quantifier'not even some') or S3 (in the case of universal quantifier 'all' or universal quantifier'some but not all'). This raises the issue that the participants may get accustomed to the position and the phrasing of the critical clues.
 
-| Question Type | Correct Answer if 'Complement' | Correct Answer if 'Cancelation' |
-| ------------- | ------------------------------ | ------------------------------- |
-| Existential quantifier | yes | yes |
-| Negated existential quantifier | yes | no |
-| Universal quantifier | no | yes |
-| Negated universal quantifier | no | no |
+We therefore included 24 comprehension questions in total: 8 about S1, 8 about S2, and 8 about S3. This aims to spread the participant's attention over the entire text. The questions targeting S1 ask about non-critical contextual details given in the sentence to prevent participants from anticipating a fixed pattern.
+
+Regarding the questions about S2 and S3, half of the questions (4 for S2, 4 for S3) also target miscellaneous information, while the other half (4 for S2, 4 for S3) directly ask about scalar ambiguity resolution. The correct answers were set to "yes" for half of all questions, and "no" for the other half, also in order to prevent anticipation. The correct answers to the questions about scalar expression in S3 (S3_scalar) are given in quantifier type since the correct answers depend on the trigger or continuation type as shown below.
+
 ```javascript
-{
-  
-  question: `Did the new shipment of jewelry contain gold watches that were fake?`,
-  question_type: "existential"
-  
-  //question: `Did the new shipment of jewelry contain gold watches that were real?`,
-  //question_type: "negated_existential"
-  //question: `Were all the gold watches in the shipment of jewelry fake?`,
-  //question_type: "universal"
-  //question: `Were all the gold watches in the shipment of jewelry real?`,
-  //question_type: "negated_universal"
-}
+question: `Were all the gold watches in the shipment of jewelry fake?`,
+question_type: "S3_scalar" // all are fake
+correct: "universal"
+question: `Did the new shipment of jewelry contain gold watches that were real?`,
+question_type: "S3_scalar"
+correct: "negated_universal" // not all are fake
 ```
+<table>
+  <thead>
+    <tr>
+      <th> question type </th>
+      <th> universal </th>
+      <th> negated universal </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><b> confirmation</td>
+      <td> yes</td><td> no </td>
+    </tr>
+    <tr>
+      <td><b> cancelation </td>
+      <td> no</td><td> yes </td>
+</table>
 
-### Comprehension questions (with Jack's suggestion)
-
-The original comprehension questions are about the scalar expression in S2 or how its ambiguity resolves in S3. Consequently, the correct answer becomes clear in either S2 (in the case of existential quantifier or negated universal quantifier) or S3(in the case of negated existential quantifier or universal quantifier). This raises the issue that the participants may get accustomed to the position and the logical formation of the clues.
-
-
-We included 24 comprehension questions in total: 8 about S1, 8 about S2, and 8 about S3. This aims to spread the participant's attention over the entire text. The questions about S1 targeted miscellaneous information given in the sentence, in order to prevent participants from anticipating a fixed pattern.
-Regarding the questions about S2 and S3, half of the questions (4 for S2, 4 for S3) also targeted miscellaneous information, while the other half (4 for S2, 4 for S3) directly ask about scalar ambiguity resolution, as in the original design. The correct answers were set to "yes" for half of all questions, and "no" for the other half, also in order to prevent anticipation. The answers to the questions about the scalar expression are given in quantifier type for the same reason as in the original comprehension questions: since the correct answers depend on the trigger or continuation type.
+To sum up, the distribution of comprehension questions are as below.
 
 <table>
   <thead>
@@ -139,7 +142,7 @@ Regarding the questions about S2 and S3, half of the questions (4 for S2, 4 for 
   <tbody>
     <tr>
       <td rowspan="2"><b>S1 (8)</b></td>
-      <td rowspan="2">Scalar(8)</td>
+      <td rowspan="2">Miscellaneous (8)</td>
       <td>Yes (4)</td>
     </tr>
     <tr>
@@ -148,25 +151,25 @@ Regarding the questions about S2 and S3, half of the questions (4 for S2, 4 for 
     <tr>
       <td rowspan="4"><b>S2 (8)</b></td>
       <td rowspan="2">Scalar (4)</td>
-      <td>Existential quantifier (2)</td>
+      <td> Yes (2)</td>
     </tr>
     <tr>
-      <td>Negated universal quantifier (2)</td>
+      <td> No (2)</td>
     </tr>
     <tr>
-      <td rowspan="2">Miscellaneous (4)</td>
+      <td rowspan="2"> Miscellaneous (4)</td>
       <td>Yes (2)</td>
     </tr>
     <tr>
       <td>No (2)</td>
     </tr>
     <tr>
-      <td rowspan="4"><b>S3 (8)</b></td>
-      <td rowspan="2">Scalar (4)</td>
-      <td>Existential (2)</td>
+      <td rowspan="4"><b> S3 (8)</b></td>
+      <td rowspan="2"> Scalar (4)</td>
+      <td> Universal Quantifier (2)</td>
     </tr>
     <tr>
-      <td>Negated universal quantifier (2)</td>
+      <td>Negated Universal Quantifier (2)</td>
     </tr>
     <tr>
       <td rowspan="2">Miscellaneous (4)</td>
@@ -179,21 +182,22 @@ Regarding the questions about S2 and S3, half of the questions (4 for S2, 4 for 
 </table>
 
 
-## Filler Trials (original)
 
-We also have 10 filler trials, which have self-paced reading sentences and comprehension questions in free format, unlike the critical trials. These ensure that participants do not become accustomed to the format of the critical trials as the experiment proceeds.
-
-## Filler Trials (With Jack's suggestion)
+## Filler Trials
 
 We also included 48 filler trials, which are designed to resemble the general structure of the critical trials, but differ from them in the critical manipulations for camouflage. 
 
 ### Filler Type 1–3: Difference in Trigger (36 trials)
 
-We have 3 types of filler trials (12 each), each differing in how the ambiguity or implication is generated. For each type, we included 8 trials of type ambiguous, where S2 introduces an ambiguity with two similarly plausible interpretations; this aims to camouflage the main trials with a scalar trigger, which activates strong and weak implicature in the participant's mind simultaneously. 
+Filler types 1-3 (12 each) differ from the critical trials in the sources of the ambiguity and correpsonding implication.
 
-We also include 4 trials of type unambiguous, where S2 introduces two interpretations, but one of the interpretations is significantly more plausible. This resembles the main trials with a focused trigger ('only some'), which activates one obvious implication ('some but not all').
+For types 2 & 3, `type ambiguous`(6 each) and `type unambiguous` (6 each)  were distinguished. 
 
-This ratio of 8 to 4 was chosen to match the ratio in the critical trials, because scalar trigger and focused trigger occur with the ratio of 2:1 in the critical trials. 
+`type ambiguous` : S2 introduces an ambiguity with two similarly plausible interpretations; this aims to camouflage the main trials with a scalar trigger, which activates strong and weak implicature in the participant's mind simultaneously. 
+
+`type unambiguous` : S2 introduces two interpretations, but one of the interpretations is significantly more plausible. This resembles the main trials with a focused trigger ('only some'), which activates one obvious implication ('some but not all').
+
+The table below compares the manipulations of the critical trials and the fillers.
 <table>
   <thead>
     <tr>
@@ -253,7 +257,7 @@ inspired by Greene et al. 1992, further trials hand & AI generated
 
 modified from Foraker & Murphy 2012, context sentence further padded 
 
-##### Type unambiguous (9 trials)
+##### Type unambiguous (6 trials)
 
 example 
 
@@ -264,7 +268,7 @@ example
 - S2: introduces a polysemous noun `cotton` (fabric vs. plant), but previous context `fashion designers` makes the 'fabric' interpretation more plausible.
 - S3: confirms the more plausible 'fabric' interpretation.
 
-##### Type ambiguous (3 trials)
+##### Type ambiguous (6 trials)
 
 - S1 (context): `The instructor showed us the final step in the practical session.`  
 - S2 (trigger): `She meticulously tested the filling.`  
@@ -277,7 +281,7 @@ example
 
 inspired by Lago et al. 2017, further trials hand & AI generated 
 
-##### Type unambiguous (9 trials)
+##### Type unambiguous (6 trials)
 
 - S1 (context): `The maintenance men told the singer about a problem.`  
 - Trigger: `They had broken his piano and would have to repair that first.`  
@@ -286,7 +290,7 @@ inspired by Lago et al. 2017, further trials hand & AI generated
 - Trigger: introduces a possessive pronoun `his`, which would be ambiguous in itself, but the context of `the singer` favors the interpretation that the `piano` belongs to `the singer` rather than `the maintenance men`.
 - Continuation: confirms the more plausible interpretation, referencing `the singer`.
 
-##### Type ambiguous (3 trials)
+##### Type ambiguous (6 trials)
 
 - Context: `The researcher and the interns walked into the break room.`  
 - Trigger: `He noticed their coffee cups were still on the table.`  
@@ -308,8 +312,8 @@ This 4th and final type introduces the same ambiguity as in the critical trials 
 - Trigger: `Many of the large trees burned down.`  
 - Continuation: `Nevertheless, my data suggested the ecosystem would bounce back.`  
 
-- S1 & S2: follows the same format as in the critical trials, until a different scalar word `many` is introduced, which might generate the implicature *many but not all*.  
-- S3: does not resolve either possible implicature
+- S1 & S2: follows the same format as in the critical trials, until a different scalar word 'many' is introduced, which might generate the implicature 'many but not all'.  
+- S3: does not resolve either of the possible implicature
   
 ### Comprehension questions
 
@@ -325,13 +329,7 @@ Just like in the critical trials, the comprehension questions for filler trials 
 
 - 3 practice sentences (e.g., "Would you like to see another example?") are shown in self-paced reading format. If the participant presses "yes", then the screen moves to the practice sentence. If the participant presses "no", then the screen skips to the main trials.
 
-## Main Trials (before Jack's suggestion)
-
-34 main trials are created by randomly mixing 24 critical trials and 10 filler trials. In the self-paced reading section, the three sentences are presented in blocks of phrases hidden by underlines. The participant presses the spacebar to reveal the next phrase. This action hides the previous phrase with an underline again. Meanwhile, the intervals between presses are recorded, representing the amount of time the participant took to process each block.
-
-Once the participant has seen all the blocks, the participant is presented with the comprehension question, and the participant's answer to the question is recorded.
-
-## Main Trials (with Jack's suggestion)
+## Main Trials
 
 72 main trials are created by randomly mixing 24 critical trials and 48 filler trials. In the self-paced reading section, the three sentences are presented in blocks of phrases hidden by underlines. Participants press the spacebar to reveal the phrases one by one. Meanwhile, the intervals between presses are recorded, representing the amount of time the participant took to process each block.
 

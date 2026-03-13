@@ -60,9 +60,6 @@
           />
         </Slide>
       </Screen>
-          
-
-    
 
       <Screen title="Get ready" label="get_ready">
         The practice trials are now complete. When you are ready to begin the study, click 'Begin'.

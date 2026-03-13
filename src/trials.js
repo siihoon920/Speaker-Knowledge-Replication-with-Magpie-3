@@ -1,30 +1,3 @@
-const practice_trials = [
-  {
-    context: `This is | the | first | example paragraph.`,
-    trigger: `Parts of | each sentence | appear | one at a time.`,
-    continuation: `You | will see | two more examples | for practice.`,
-    question: `Would you like you see two more examples?`,
-    option1: `yes`,
-    option2: `no`
-  },
-  {
-    context: `This is | the second | example paragraph.`,
-    trigger: `You | will see | one more example | for practice.`,
-    continuation: `The next | will | be the | last example.`,
-    question: `Would you like to see one more examples?`,
-    option1: `yes`,
-    option2: `no`
-  },
-  {
-    context: `This is | the third | example paragraph.`,
-    trigger: `It is | also the | final example.`,
-    continuation: `You | will not see | any more | examples | for practice.`,
-    question: `The examples are over, would you like to proceed to the next step?`,
-    option1: `yes`,
-    option2: `no`
-  }
-];
-
 let raw_critical_trials = [
   {
     ID: 1,
@@ -38,7 +11,7 @@ let raw_critical_trials = [
     },
     continuation: {
       complement: `The rest | were real, | but the | company is still | planning | to sue.`,
-      cancelation: `In fact, | they all | were, | so the | company is | planning | to sue.`
+      cancellation: `In fact, | they all | were, | so the | company is | planning | to sue.`
     },
     question: `Were there vegetables in the shipment?`,
     question_type: `S1`,
@@ -56,11 +29,11 @@ let raw_critical_trials = [
     },
     continuation: {
       complement: `The rest | stayed at home | and foolishly | risked their | lives.`,
-      cancelation: `In fact, | they all | did | and, | as a result, | they survived | the storm.`
+      cancellation: `In fact, | they all | did | and, | as a result, | they survived | the storm.`
     },
-    question: `Were any of the residents in their town when the hurricane landed?`,
-    question_type: `S3_all`,
-    correct: `negated_existential`
+    question: `Were any of the residents still in their house when the hurricane landed?`,
+    question_type: `S3_scalar`,
+    correct: `negated_universal`
   },
   {
     ID: 3,
@@ -74,11 +47,11 @@ let raw_critical_trials = [
     },
     continuation: {
       complement: `The rest | were missing | because they | had to audit | the company’s finances | before | the end of | the quarter.`,
-      cancelation: `In fact, | they all | were | in order to | communicate | how budget cutbacks | were crippling | their division.`
+      cancellation: `In fact, | they all | were | in order to | communicate | how budget cutbacks | were crippling | their division.`
     },
     question: {
       complement: `Was there an audit for the company's finances?`,
-      cancelation: `Were the accountants worried about the potential budget cutbacks`
+      cancellation: `Were the accountants unhappy about the budget cutbacks?`
     },
     question_type: `S3_misc`,
     correct: `yes`
@@ -95,11 +68,11 @@ let raw_critical_trials = [
     },
     continuation: {
       complement: `The others | were killed | on impact | and there | was no | opportunity to | save them.`,
-      cancelation: `In fact, | they all | were | and none | were critically injured.`
+      cancellation: `In fact, | they all | were | and none | were critically injured.`
     },
     question: `Did any passenger die in the bus accident on the highway?`,
-    question_type: `S3_all`,
-    correct: `negated_existential`
+    question_type: `S3_scalar`,
+    correct: `negated_universal`
   },
   {
     ID: 5,
@@ -113,10 +86,10 @@ let raw_critical_trials = [
     },
     continuation: {
       complement: `The others | were successful | despite the | recent economic | downturn.`,
-      cancelation: `In fact, | they all | did | because of the | recent economic | downturn.`
+      cancellation: `In fact, | they all | did | because of the | recent economic | downturn.`
     },
     question: `Did all real estate investments increase in value in spite of the economic downturn?`,
-    question_type: `S2_some`,
+    question_type: `S2_scalar`,
     correct: `no`
   },
   {
@@ -131,10 +104,10 @@ let raw_critical_trials = [
     },
     continuation: {
       complement: `The rest | were clean | because their | owners had | been very | cautious.`,
-      cancelation: `In fact, | they all | were | and the | virus nearly | destroyed the | whole system.`
+      cancellation: `In fact, | they all | were | and the | virus nearly | destroyed the | whole system.`
     },
-    question: `Has there been damaging software on any computers at the office?`,
-    question_type: `S2_some`,
+    question: `Has there been virus on any computers at the office?`,
+    question_type: `S2_scalar`,
     correct: `yes`
   },
   {
@@ -144,14 +117,14 @@ let raw_critical_trials = [
       partial: `Earlier today, | I passed | by a group of tourists | looking at sights | downtown.`
     },
     trigger: {
-      scalar: `Some of | the tourists | got soaked | by the | rain storm.`,
+      scalar: `Some of | the tourists | got soaked | by the | rainstorm.`,
       focused: `Only | some of | the tourists | got soaked | by the | rain storm.`
     },
     continuation: {
       complement: `The rest | were dry | because they | had remembered | their umbrellas.`,
-      cancelation: `In fact, | they all | did | because they | had forgotten | their umbrellas.`
+      cancellation: `In fact, | they all | did | because they | had forgotten | their umbrellas.`
     },
-    question: `Was there a rain storm downtown earlier today?`,
+    question: `Was there a rainstorm downtown earlier today?`,
     question_type: `S2_misc`,
     correct: `yes`
   },
@@ -167,7 +140,7 @@ let raw_critical_trials = [
     },
     continuation: {
       complement: `The rest | were going | to be | stored in | the warehouse | until the | following season.`,
-      cancelation: `In fact, | they all | had | since they | were stylish | and cheap.`
+      cancellation: `In fact, | they all | had | since they | were stylish | and cheap.`
     },
     question: `Did the furniture sale include any leather couches?`,
     question_type: `S2_misc`,
@@ -185,9 +158,9 @@ let raw_critical_trials = [
     },
     continuation: {
       complement: `The rest | were mild | and I | found them | to be | too bland.`,
-      cancelation: `In fact, | they all | were | but fortunately | I love | spicy food.`
+      cancellation: `In fact, | they all | were | but fortunately | I love | spicy food.`
     },
-    question: `Do I enjoy eating spicy food?`,
+    question: `Do I seem to enjoy spicy food?`,
     question_type: `S3_misc`,
     correct: `yes`
   },
@@ -203,10 +176,10 @@ let raw_critical_trials = [
     },
     continuation: {
       complement: `The rest | were shut down | since they | were no | longer popular.`,
-      cancelation: `In fact, | they all | were | since they | were still | popular.`
+      cancellation: `In fact, | they all | were | since they | were still | popular.`
     },
-    question: `Had all of my favorite rides at Disney World been closed?`,
-    question_type: `S2_some`,
+    question: `Had all of my favorite rides at Disney World been shut down?`,
+    question_type: `S2_scalar`,
     correct: `no`
   },
   {
@@ -221,7 +194,7 @@ let raw_critical_trials = [
     },
     continuation: {
       complement: `The rest | were safe | but I | was still | extremely upset.`,
-      cancelation: `In fact, | they all | were | even though | I had | secured them.`
+      cancellation: `In fact, | they all | were | even though | I had | secured them.`
     },
     question: `Was my house burglarized?`,
     question_type: `S1`,
@@ -239,10 +212,11 @@ let raw_critical_trials = [
     },
     continuation: {
       complement: `The rest | were intact | so it | should still | be able | to eat | solid food.`,
-      cancelation: `In fact, | they all | were | because its | owners completely | neglected its | oral hygiene.`
+      cancellation: `In fact, | they all | were | because its | owners completely | neglected its | oral hygiene.`
     },
     question: `Did the dog have any missing teeth?`,
-    question_type: `S2_some`
+    question_type: `S2_scalar`,
+    correct: `yes`
   },
   {
     ID: 13,
@@ -256,9 +230,9 @@ let raw_critical_trials = [
     },
     continuation: {
       complement: `The others | were fine | so it | would not | cost too | much to | fix it.`,
-      cancelation: `In fact, | they all | were | so the | cost to | repair it | would be enormous.`
+      cancellation: `In fact, | they all | were | so the | cost to | repair it | would be enormous.`
     },
-    question: `Was a brand-new bus found in the school parking lot?`,
+    question: `Was the bus found in the school parking lot brand-new?`,
     question_type: `S1`,
     correct: `no`
   },
@@ -274,10 +248,10 @@ let raw_critical_trials = [
     },
     continuation: {
       complement: `The rest | were wrong | so my | theory must | be mistaken.`,
-      cancelation: `In fact, | they all | were | so I | should be | able to | publish the results.`
+      cancellation: `In fact, | they all | were | so I | should be | able to | publish the results.`
     },
     question: `Were all of my predictions confirmed by my research?`,
-    question_type: `S3_all`,
+    question_type: `S3_scalar`,
     correct: `universal`
   },
   {
@@ -292,7 +266,7 @@ let raw_critical_trials = [
     },
     continuation: {
       complement: `The rest | were cheap | despite my | family’s love | for luxurious holidays.`,
-      cancelation: `In fact, | they all | were | because my | family loves | luxurious holidays.`
+      cancellation: `In fact, | they all | were | because my | family loves | luxurious holidays.`
     },
     question: `Does my family live in Europe?`,
     question_type: `S1`,
@@ -310,11 +284,11 @@ let raw_critical_trials = [
     },
     continuation: {
       complement: `The others | were untouched, | but I | was still | concerned and | decided to | call her | parents.`,
-      cancelation: `In fact, | they all | were | but I | decided not | to call | her parents | because it | was so | hard to | find a | babysitter.`
+      cancellation: `In fact, | they all | were | but I | decided not | to call | her parents | because it | was so | hard to | find a | babysitter.`
     },
-    question: `Have all new bottles of vodka been untouched?`,
-    question_type: `S3_all`,
-    correct: `negated_existential`
+    question: `Were all of my new bottles of vodka opened?`,
+    question_type: `S3_scalar`,
+    correct: `universal`
   },
   {
     ID: 17,
@@ -328,11 +302,11 @@ let raw_critical_trials = [
     },
     continuation: {
       complement: `The others | were fine | so the | repairs shouldn’t be | too expensive.`,
-      cancelation: `In fact, | they all | were | so they | will require | extensive repairs.`
+      cancellation: `In fact, | they all | were | so they | will require | extensive repairs.`
     },
     question: {
       complement: `Do I expect the repairs to cost a lot?`,
-      cancelation: `Do I expect the repairs to be affordable?`
+      cancellation: `Do I expect the repairs to be affordable?`
     },
     question_type: `S3_misc`,
     correct: `no`
@@ -349,7 +323,7 @@ let raw_critical_trials = [
     },
     continuation: {
       complement: `The others | were straightforward | and I | feel like | I learned | a lot.`,
-      cancelation: `In fact, | they all | were | but it | received a | positive review anyway.`
+      cancellation: `In fact, | they all | were | but it | received a | positive review anyway.`
     },
     question: `Did a friend suggest reading up on math to me?`,
     question_type: `S1`,
@@ -367,14 +341,14 @@ let raw_critical_trials = [
     },
     continuation: {
       complement: `The others | were normal | but I | decided to | order more anyway.`,
-      cancelation: `In fact, | they all | did, | which confused | me because | we hadn’t | used a | lot this morning.`
+      cancellation: `In fact, | they all | did, | which confused | me because | we hadn’t | used a | lot this morning.`
     },
     question: {
-      complement: `Did I decided to buy more liquid nitrogen?`,
-      cancelation: `Did we use a lot of liquid nitrogen this morning?`
+      complement: `Did I hold back on buying more liquid nitrogen?`,
+      cancellation: `Did we use a lot of liquid nitrogen this morning?`
     },
     question_type: `S3_misc`,
-    correct: `yes`
+    correct: `no`
   },
   {
     ID: 20,
@@ -388,10 +362,11 @@ let raw_critical_trials = [
     },
     continuation: {
       complement: `The others | were not invited | to attend because | the teachers | didn’t want | anyone to | feel left out.`,
-      cancelation: `In fact, | they all | did | because the | teachers didn’t | want any | of them | to feel | left out.`
+      cancellation: `In fact, | they all | did | because the | teachers didn’t | want any | of them | to feel | left out.`
     },
-    question: `the school assembly involve handing out awards to student?`,
-    question_type: `S1`
+    question: `Did the school assembly involve handing out awards to students?`,
+    question_type: `S1`,
+    correct: `yes`
   },
   {
     ID: 21,
@@ -405,11 +380,11 @@ let raw_critical_trials = [
     },
     continuation: {
       complement: `The others | were labeled | appropriately though | a few | of them | had been | shelved in | the wrong place.`,
-      cancelation: `In fact, | they all | were | which made | the job | much more difficult.`
+      cancellation: `In fact, | they all | were | which made | the job | much more difficult.`
     },
-    question: `Does the library's collection only contain fiction?`,
+    question: `Did the library's collection contain only fiction?`,
     question_type: `S2_misc`,
-    correct: `No`
+    correct: `no`
   },
   {
     ID: 22,
@@ -423,9 +398,9 @@ let raw_critical_trials = [
     },
     continuation: {
       complement: `The others | were blowouts | which made | the games | boring to watch.`,
-      cancelation: `In fact, | they all | were | which made | the games | stressful to watch.`
+      cancellation: `In fact, | they all | were | which made | the games | stressful to watch.`
     },
-    question: `When I was a highschooler, did I go to a school with a football team?`,
+    question: `When I was in highschool, did I go to a school with a football team?`,
     question_type: `S1`,
     correct: `yes`
   },
@@ -441,9 +416,9 @@ let raw_critical_trials = [
     },
     continuation: {
       complement: `The others | were totally | unfamiliar which | made the | test somewhat challenging.`,
-      cancelation: `In fact, | they all | did | which made | the test | somewhat easier.`
+      cancellation: `In fact, | they all | did | which made | the test | somewhat easier.`
     },
-    question: `Did I preared for a test on Spanish grammar?`,
+    question: `Did I prepare for a test on Spanish grammar?`,
     question_type: `S1`,
     correct: `no`
   },
@@ -459,11 +434,14 @@ let raw_critical_trials = [
     },
     continuation: {
       complement: `The others | were relatively steady | but my | portfolio was | still down | for the year.`,
-      cancelation: `In fact, | they all | did | but my | portfolio was | still down | for the year.`
+      cancellation: `In fact, | they all | did | but my | portfolio was | still down | for the year.`
     },
-    question: `am I used to ?`,
+    question: {
+      scalar: `Did I expect many of my stocks to go up?`,
+      focused: `Did I expect only few of my stocks to go up?`
+    },
     question_type: `S2_misc`,
-    correct: `yes`
+    correct: `no`
   }
 ];
 
@@ -473,7 +451,7 @@ let raw_filler_trials = [
     ID: 1,
     context: `Lena and Marcus | often argued | about their finances.`,
     trigger: `One of them | kept making | spontaneous purchases, | while the other | stressed about | the budget.`,
-    continuation: `He showed | Lena | a credit card bill |with surprise charges, | and then | he  shook | his head | in frustration.`,
+    continuation: `He showed | Lena | a credit card bill |with surprise charges, | and then | he shook | his head | in frustration.`,
     question: `Is finance a frequent topic of dispute between the couple?`,
     question_type: `S1`,
     correct: `yes`
@@ -484,153 +462,130 @@ let raw_filler_trials = [
     context: `Jessica | and Aaron | argued constantly | about household chores.`,
     trigger: `One of them | always brought up | old mistakes, | while the other | tried to | stay calm.`,
     continuation: `Aaron | accused Jessica | of never | doing chores | in the house | and then | he stormed | out of the room.`,
-    question: `Do Jessica and Aaron have frequent fights?`,
+    question: `Did Jessica and Aaron have frequent fights?`,
     question_type: `S1`,
     correct: `yes`
   },
   {
     type: `1`,
     ID: 3,
-    context: `Emma and Noah | cleaned the | classroom together | after school.`,
-    trigger: `One of them | mopped the | floor while | the other | wiped the desks.`,
-    continuation: `Emma | handed | a mop | to Noah | and then | she left | the room.`,
-    question: `Did Noah hand a mop to Emma?`,
+    context: `Sophie and Liam | played video games | all afternoon.`,
+    trigger: `One of them | used the controller | while the | other watched.`,
+    continuation: `Liam | bumped into | Sophie during | the match, | which distracted her | and cost | her the game.`,
+    question: `Did Sophie and Liam play tennis in the afternoon?`,
     question_type: `S1`,
     correct: `no`
   },
   {
     type: `1`,
     ID: 4,
-    context: `Jack and Olivia | organized | books | on the | library shelves.`,
-    trigger: `One of them | sorted fiction | while | the other | labeled nonfiction.`,
-    continuation: `Jack hand | a book | to Olivia | and then | he sat down.`,
-    question: `Did Olivia pass a book to Jack?`,
+    context: `To change | the lightbulb, | the father | and the daughter | brought a ladder | into the house.`,
+    trigger: `One of them | held the ladder | in place | while the | other changed | the lightbulb.`,
+    continuation: `The daughter | fell onto | her father, | and fortunately | he was able | to catch her.`,
+    question: `Did the father and the daughter have to paint the ceiling?`,
+    question_type: `S1`,
+    correct: `no`
+  },
+  { 
+    type: `1`,
+    ID: 5,
+    context: `Emma and Noah | cleaned the | classroom together | after school.`,
+    trigger: `One of them | mopped the | floor while | the other | wiped the desks.`,
+    continuation: `Emma | handed | a mop | to Noah | and then | she left | the room.`,
+    question: `Did Noah mop the floor?`,
     question_type: `S2`,
     correct: `no`
   },
   {
     type: `1`,
-    ID: 5,
-    context: `Ella  and Ethan | prepared lunch | in the | kitchen together.`,
+    ID: 6,
+    context: `Noah and Olivia | studied for | the final exam | last weekend.`,
+    trigger: `One of them | made flashcards | while the other | took practice tests.`,
+    continuation: `Noah passed | the cards | to Olivia | and then | she went | through them.`,
+    question: `Did both Noah and Olivia make flashcards?`,
+    question_type: `S2`,
+    correct: `no`
+  },
+  {
+    type: `1`,
+    ID: 7,
+    context: `Ella and Ethan | prepared lunch | in the | kitchen together.`,
     trigger: `One of them | chopped vegetables | while the other | cooked rice.`,
-    continuation: `She offered | Ethan | a spoonful | to taste | and then | she smiled.`,
-    question: `Did they make a dish with rice for lunch?`,
+    continuation: `She offered | him | a spoonful | to taste | and then | she smiled.`,
+    question: `Did Ella chop vegetables?`,
     question_type: `S2`,
     correct: `yes`
   },
   {
     type: `1`,
-    ID: 6,
-    context: `Ava and Lucas | worked together | on the | art project.`,
-    trigger: `One of them | drew the | outlines while | the other | filled in | the colors.`,
-    continuation: `He handed | a marker | to Ava | and then | he | picked up | the brush.`,
-    question: `DId lucas pick up the brush?`,
-    question_type: `S3`,
-    correct: `yes`
-  },
-  {
-    type: `1`,
-    ID: 7,
-    context: `Nora and Owen | prepared for | the debate | competition together.`,
-    trigger: `One of them | wrote arguments | while the | other practiced | rebuttals.`,
-    continuation: `Nora corrected | Owen’s bullet points | and then | she rehearsed | her own lines.`,
-    question: `Did Nora correct Owen's bullet points?`,
-    question_type: `S3`,
-    correct: `yes`
-  },
-  {
-    type: `1`,
     ID: 8,
-    context: `Caleb and Zoe | built | a  birdhouse | over the weekend.`,
+    context: `Caleb and Zoe | built | a birdhouse | over the weekend.`,
     trigger: `One of them | cut the | wood while | the other | painted the walls.`,
     continuation: `Zoe | passed | the brush | to Caleb | and then | she grabbed | a hammer.`,
-    question: `Did Zoe grab a hammer?`,
-    question_type: `S3`,
+    question: `Did Zoe paint the walls?`,
+    question_type: `S2`,
     correct: `yes`
   },
   {
     type: `1`,
     ID: 9,
-    context: `Mary  and  John | were doing | the  dishes | after dinner.`,
-    trigger: `One of them | was  washing | while | the other | dried.`,
-    continuation: `Mary accidentally | scratched  John | with a knife | and  then | she | dropped it | on the counter.`,
-    question: `Did John drop the knife?`,
+    context: `Jack and Olivia | organized | books | on the | library shelves.`,
+    trigger: `One of them | sorted fiction | while | the other | labeled nonfiction.`,
+    continuation: `Jack handed | a book | to Olivia | and then | he sat down.`,
+    question: `Did Olivia pass a book to Jack?`,
     question_type: `S3`,
     correct: `no`
   },
   {
     type: `1`,
     ID: 10,
-    context: `Sophie and Liam | played video games | all afternoon.`,
-    trigger: `One of them | used the controller | while the | other watched.`,
-    continuation: `Liam | bumped into | Sophie during | the match, | which distracted her | and cost | her the game.`,
-    question: `Did Sophie and Liam play video games in the afternoon?`,
-    question_type: `S1`,
+    context: `Ava and Lucas | worked together | on the | art project.`,
+    trigger: `One of them | drew the | outlines while | the other | filled in | the colors.`,
+    continuation: `He handed | a marker | to Ava | and then | he | picked up | the brush.`,
+    question: `Did Lucas pick up the brush?`,
+    question_type: `S3`,
     correct: `yes`
   },
   {
     type: `1`,
     ID: 11,
-    context: `Noah | and | Olivia | studied | for | the | final | exam | last | weekend.`,
-    trigger: `One | of | them | made | flashcards | while | the | other | took | practice | tests.`,
-    continuation: `Noah | passed the | cards to Oliva | and then | she | went through them.`,
-    question: `Did both Mia and Olivia make flashcards?`,
-    question_type: `S2`,
-    correct: `no`
+    context: `Nora and Owen | prepared for | the debate | competition together.`,
+    trigger: `One of them | wrote arguments | while the | other practiced | rebuttals.`,
+    continuation: `Nora corrected | his bullet points | and then | she rehearsed | her own lines.`,
+    question: `Did Nora correct Owen's bullet points?`,
+    question_type: `S3`,
+    correct: `yes`
   },
   {
     type: `1`,
     ID: 12,
-    context: `Leo and Mia | edited video | clips for | the  school project.`,
-    trigger: `One of them | organized | the footage | while | the other | adjusted | the audio.`,
-    continuation: `Leo played | a clip | for Mia | and then | she | synced the video | with the audio.`,
-    question: `Did Leo play a clip for Mia?`,
+    context: `Mary and John | were doing | the dishes | after dinner.`,
+    trigger: `One of them | was washing | while | the other | dried.`,
+    continuation: `Mary accidentally | scratched John | with a knife | and then | she | dropped it | on the counter.`,
+    question: `Did John drop the knife?`,
     question_type: `S3`,
-    correct: `yes`
-  },
-
-  {
-    type: `2_unambiguous`,
-    ID: 13,
-    context: `The CEO | updated the | design team | on their | latest collection.`,
-    trigger: `The fashion designers | discussed | the cotton.`,
-    continuation: `The fabric | was not | what they | had been | hoping for.`,
-    question: `Were the designers disappointed with the fabric?`,
-    question_type: `S3`,
-    correct: `yes`
+    correct: `no`
   },
   {
     type: `2_unambiguous`,
     ID: 14,
-    context: `I arrived at | the concert hall | early and | looked around | the place.`,
-    trigger: `The dancers | were arguing | about the production`,
-    continuation: `The chorus | line needed to | be adjusted | right away.`,
-    question: `Were the dancers satisfied with the chorus line?`,
-    question_type: `S3`,
+    context: `The news | reported on | the recent | stock market crash | in the country.`,
+    trigger: `The president | sent out an | important message | to the public.`,
+    continuation: `This gave | people the | motivation to | persevere through | the crisis.`,
+    question: `Did the country recently experience a stock market boom?`,
+    question_type: `S1`,
     correct: `no`
   },
   {
     type: `2_unambiguous`,
     ID: 15,
-    context: `While sitting | on my desk, | I got a | question about | some lost stuff.`,
-    trigger: `The children | were wondering about | the tin.`,
-    continuation: `The cookie | container was | suddenly nowhere | to be found.`,
-    question: `Were the children able to find the cookie container by themselves?`,
-    question_type: `S3`,
-    correct: `no`
+    context: `I told the houskeeper | to count | the number | to make | sure nothing | is missing.`,
+    trigger: `She | carefully counted | the sheets.`,
+    continuation: `She said | we didn't lose any linen.`,
+    question: `Do I currently employ a housekeeper?`,
+    question_type: `S1`,
+    correct: `yes`
   },
-
-  {
-    type: `2_unambiguous`,
-    ID: 16,
-    context: `An old man | bragged | to me | about his success.`,
-    trigger: `As an investor, | he thought about | his fortune.`,
-    continuation: `He realized that | his wealth | was tremendous.`,
-    question: `Does the investor think that his success is due to luck?`,
-    question_type: `S2`,
-    correct: `no`
-  },
-
   {
     type: `2_unambiguous`,
     ID: 17,
@@ -644,74 +599,92 @@ let raw_filler_trials = [
   {
     type: `2_unambiguous`,
     ID: 18,
-    context: `I told her | to count | the number | to make | sure nothing | is missing.`,
-    trigger: `The housekeeper | carefully counted | the sheets.`,
-    continuation: `She said | we didn't lose any linen.`,
-    question: `Do I currently employ a housekeeper?`,
-    question_type: `S2`,
-    correct: `yes`
-  },
-
-  {
-    type: `2_unambiguous`,
-    ID: 19,
-    context: `I heard | the backstory of | how the | unusual color | scheme on | the painting | came about.`,
+    context: `I heard | the story of | how the | unusual color | scheme on | the painting | came about.`,
     trigger: `The graphic | artist had | to reject | the orange.`,
-    continuation: `The paint | was unusual | and too intense.`,
-    question: `Are the colors on the painting as the artist initially intended?`,
-    question_type: `S1`,
+    continuation: `The paint was | too intense | and did not | suit the mood.`,
+    question: `Did the artist stick with their initial color choice?`,
+    question_type: `S2`,
     correct: `no`
   },
   {
     type: `2_unambiguous`,
-    ID: 20,
-    context: `I got | an urgent | call on | my phone | for help.`,
-    trigger: `The skier | grew annoyed | with the cold`,
-    continuation: `The temperature was | making her | tired and | cranky`,
-    question: `Did I get a call for urgent help?`,
-    question_type: `S1`,
+    ID: 19,
+    context: `The CEO | updated the | design team | on their | latest collection.`,
+    trigger: `The fashion designers | discussed | the cotton.`,
+    continuation: `The fabric | was not | what they | had been | hoping for.`,
+    question: `Were the designers disappointed with the fabric?`,
+    question_type: `S3`,
     correct: `yes`
   },
   {
     type: `2_unambiguous`,
     ID: 21,
-    context: `The news | reported on | the recent | stock market crash | in the country.`,
-    trigger: `The president | sent out an | important message | to the public.`,
-    continuation: `This gave | people the | motivation to | persevere through | the crisis.`,
-    question: `Did the stock market in the country recently experience a downturn?`,
-    question_type: `S1`,
+    context: `While sitting | on my desk, | I got a | question about | some lost stuff.`,
+    trigger: `The children | were wondering about | the tin.`,
+    continuation: `The cookie | container was | suddenly nowhere | to be found.`,
+    question: `Did the children lose the cookie container?`,
+    question_type: `S3`,
     correct: `yes`
   },
   {
     type: `2_ambiguous`,
     ID: 22,
-    context: `A particularly | eye-catching | book | was discovered.`,
-    trigger: `And then | they discussed | what was | weird about | the book.`,
-    continuation: `The cover | seemed slightly | different than | the others`,
-    question: `Did all books seem normal to them?`,
+    context: `We received | a complaint | from one | of our workers.`,
+    trigger: `He complained about | the trunk.`,
+    continuation: `The log | was too | large for just | one man | to move.`,
+    question: `Were all the employees satisfied with their work?`,
     question_type: `S1`,
     correct: `no`
   },
   {
     type: `2_ambiguous`,
+    ID: 13,
+    context: `The village hall | received a | call asking for help.`,
+    trigger: `The villagers | were worried | about the | potential cold. `,
+    continuation: `The temperature could | make the | crops freeze.`,
+    question: `Did the village hall receive a call for support?`,
+    question_type: `S1`,
+    correct: `yes`
+  },
+  {
+    type: `2_ambiguous`,
     ID: 23,
+    context: `The critics | discovered | an interesting | cover.`,
+    trigger: `And then | they discussed | what was | special about it.`,
+    continuation: `The bass line | sounded slightly | different than | in the original.`,
+    question: `Did the critics think the cover special?`,
+    question_type: `S2`,
+    correct: `yes`
+  },
+  {
+    type: `2_ambiguous`,
+    ID: 16,
+    context: `An old man | bragged | to me | about his success.`,
+    trigger: `He seemed to | appreciate his | fortune very much.`,
+    continuation: `He was proud | of the | tremendous wealth | he accumulated.`,
+    question: `Did the old man think that his success was due to luck?`,
+    question_type: `S2`,
+    correct: `no`
+  },
+  {
+    type: `2_ambiguous`,
+    ID: 24,
     context: `The instructor | showed us | the final | step in | the practical session.`,
     trigger: `She meticulously | tested | the filling.`,
     continuation: `The metal | was covering | the teeth | smooth and evenly.`,
     question: `Did the instructor test the filling on the teeth?`,
-    question_type: `S2`,
-    correct: `yes`
-  },
-
-  {
-    type: `2_ambiguous`,
-    ID: 24,
-    context: `We received | a complaint | from one | of our workers.`,
-    trigger: `He complained about | the trunk.`,
-    continuation: `The log | was too | large for just | one man | to move.`,
-    question: `Did the employee complain about the weight of the log?`,
     question_type: `S3`,
     correct: `yes`
+  },
+  {
+    type: `2_ambiguous`,
+    ID: 20,
+    context: `The experts | warned us about | the danger | of moles.`,
+    trigger: `They said | the moles | could take | us over | and cause | serious damage.`,
+    continuation: `The spies | were finally | caught after | a long | investigation.`,
+    question: `Were the experts worried about marks on our skin?`,
+    question_type: `S3`,
+    correct: `no`
   },
   {
     type: `3_unambiguous`,
@@ -725,30 +698,20 @@ let raw_filler_trials = [
   },
   {
     type: `3_unambiguous`,
-    ID: 26,
-    context: `The manager | monitored the | the waiters' service | throughout the day.`,
-    trigger: `He noted | their tone | was consistently | professional.`,
-    continuation: `The manager | shared positive | feedback during | the team debrief.`,
-    question: `Were the waiters' service monitored throughout the day?`,
-    question_type: `S1`,
-    correct: `yes`
-  },
-  {
-    type: `3_unambiguous`,
     ID: 27,
     context: `The therapist | listened to the | clients’ group | discussion closely.`,
-    trigger: `They  noticed | his warmth | towards their | emotional struggles.`,
+    trigger: `They noticed | his warmth | towards their | emotional struggles.`,
     continuation: `The clients were appreciative of the therapist's help.`,
-    question: `Did the therapist do most of the talking durign the discussion?`,
+    question: `Did the therapist do most of the talking during the discussion?`,
     question_type: `S1`,
     correct: `no`
   },
   {
     type: `3_unambiguous`,
     ID: 28,
-    context: `The  maintenance men | told | the | singer about | a problem.`,
+    context: `The maintenance men | told | the | singer about | a problem.`,
     trigger: `They had | broken his | piano and | would have | to repair | that first.`,
-    continuation: `The singer agreed | but  asked | for a replacement | keyboard until | the repair is finished.`,
+    continuation: `The singer agreed | but asked | for a replacement | keyboard until | the repair is finished.`,
     question: `Did the maintenance men break the singer's piano?`,
     question_type: `S2`,
     correct: `yes`
@@ -759,25 +722,15 @@ let raw_filler_trials = [
     context: `The principal | carefully went | through the | students' report.`,
     trigger: `She was | disappointed to | see their grades | in science.`,
     continuation: `The principal | decided to | hire new | science teachers.`,
-    question: `Did the children get bad grades in science?`,
+    question: `Did the children get good grades in science?`,
     question_type: `S2`,
-    correct: `yes`
-  },
-  {
-    type: `3_unambiguous`,
-    ID: 30,
-    context: `The director | reviewed the | actors' final | rehearsal footage.`,
-    trigger: `He was | impressed by | their performance | in the climax.`,
-    continuation: `The director | extended | their contracts |for the next project.`,
-    question: `Did the actors perform well in the climax?`,
-    question_type: `S2`,
-    correct: `yes`
+    correct: `no`
   },
   {
     type: `3_unambiguous`,
     ID: 31,
     context: `The crowd | and the author | gathered together | for the fan meeting.`,
-    trigger: `They asked | when her | next release | is scheduled.`,
+    trigger: `They asked her | when the | next release | is scheduled.`,
     continuation: `The author | smiled and | said that | her new novel | would be out | by summer.`,
     question: `Is her new release planned for next winter?`,
     question_type: `S3`,
@@ -794,16 +747,6 @@ let raw_filler_trials = [
     correct: `no`
   },
   {
-    type: `3_unambiguous`,
-    ID: 33,
-    context: `The children and | the magician | crowded around | the table.`,
-    trigger: `She examined | their reaction | carefully during | the card trick.`,
-    continuation: `The children's | faces were | filled with | shock and | the magician smiled | in satisfaction.`,
-    question: `Did the children like the magic trick?`,
-    question_type: `S3`,
-    correct: `yes`
-  },
-  {
     type: `3_ambiguous`,
     ID: 34,
     context: `The actor | and the agents | arrived at | the venue.`,
@@ -812,6 +755,16 @@ let raw_filler_trials = [
     question: `Did the actor arrive at the venue alone?`,
     question_type: `S1`,
     correct: `no`
+  },
+  {
+    type: `3_ambiguous`,
+    ID: 26,
+    context: `The manager | monitored the | waiters' service | throughout the day.`,
+    trigger: `He noted | their tone | was consistently | professional.`,
+    continuation: `The manager | shared positive | feedback during | the team debrief.`,
+    question: `Were the waiters' service monitored throughout the day?`,
+    question_type: `S1`,
+    correct: `yes`
   },
   {
     type: `3_ambiguous`,
@@ -825,6 +778,16 @@ let raw_filler_trials = [
   },
   {
     type: `3_ambiguous`,
+    ID: 30,
+    context: `The director | reviewed the | actors' final | rehearsal footage.`,
+    trigger: `She was | impressed by | their enthusiasm | in the climax.`,
+    continuation: `The director | extended | their contracts | for the next project.`,
+    question: `Did the actors perform poorly in the climax?`,
+    question_type: `S2`,
+    correct: `no`
+  },
+  {
+    type: `3_ambiguous`,
     ID: 36,
     context: `The journalist | and the | botanists entered | the greenhouse.`,
     trigger: `They noticed | her umbrella | had been | left by the door.`,
@@ -834,19 +797,29 @@ let raw_filler_trials = [
     correct: `yes`
   },
   {
+    type: `3_ambiguous`,
+    ID: 33,
+    context: `The children and | the magician | crowded around | the table.`,
+    trigger: `She observed | their faces | carefully during | the card trick.`,
+    continuation: `The children's | expressions were | filled with | shock and | the magician smiled | in satisfaction.`,
+    question: `Were the children underwhelmed by the magic trick?`,
+    question_type: `S3`,
+    correct: `no`
+  },
+  {
     type: `4`,
-    ID: 39,
+    ID: 37,
     context: `On our | road trip, | we passed | several gas stations.`,
     trigger: `Most of them | were closed | for renovations.`,
     continuation: `Only | the last two | stops were open.`,
-    question: `Did we stop at the first gas station we saw on the road trip?`,
+    question: `Did we stop at the first gas station that we encountred?`,
     question_type: `S1`,
     correct: `no`
   },
   {
     type: `4`,
-    ID: 41,
-    context: `Yesterday, | I met with |  my advisor | to discuss | my elective courses.`,
+    ID: 38,
+    context: `Yesterday, | I met with | my advisor | to discuss | my elective courses.`,
     trigger: `She | recommended | some of the electives.`,
     continuation: `I | chose | the easiest | options of | them all.`,
     question: `Did my advisor and I discuss obligatory courses?`,
@@ -855,17 +828,27 @@ let raw_filler_trials = [
   },
   {
     type: `4`,
-    ID: 47,
+    ID: 39,
     context: `The doctor | carefully checked | the moles | on my arms.`,
-    trigger: `Some | were | symmetric, | others | were asymmetric.`,
-    continuation: `He said the latter could potentially be signs of skin cancer.`,
-    question: `Do I have moles on my arms?`,
+    trigger: `Some | were | symmetric, | and others | were asymmetric.`,
+    continuation: `He said | the latter | could potentially | be signs | of skin cancer.`,
+    question: `Did I have moles on my arms checked?`,
+    question_type: `S1`,
+    correct: `yes`
+  },
+   {
+    type: `4`,
+    ID: 40,
+    context: `The basketball | player worked on | her 3 point shooting | before the game`,
+    trigger: `She made | only some | of the shots.`,
+    continuation: `She decided to | focus on | scoring in the paint | this game`,
+    question: `Did the basketball player work on her 3 point shots?`,
     question_type: `S1`,
     correct: `yes`
   },
   {
     type: `4`,
-    ID: 38,
+    ID: 41,
     context: `During the meeting, | the manager | presented the | budget report.`,
     trigger: `Some of | the numbers | seemed exaggerated.`,
     continuation: `Specifically, | the revenue figures | needed to | be checked.`,
@@ -876,9 +859,9 @@ let raw_filler_trials = [
   
   {
     type: `4`,
-    ID: 44,
+    ID: 42,
     context: `In the | chemistry lab, | I measured | different samples.`,
-    trigger: `Some of | the results | were  off | by a little.`,
+    trigger: `Some of | the results | were off | by a little.`,
     continuation: `So I | recalibrated | the instruments.`,
     question: `Were all readings from the measurement accurate?`,
     question_type: `S2`,
@@ -886,17 +869,17 @@ let raw_filler_trials = [
   },
   {
     type: `4`,
-    ID: 45,
+    ID: 43,
     context: `The novelist | reviewed | her draft of | her new romance book.`,
-    trigger: `A few of | the chapters | had | explicit expressions.`,
-    continuation: `The novelist | decided to | publish the draft | as it was | anyway`,
+    trigger: `Only some of | the chapters | had | explicit expressions.`,
+    continuation: `So the novelist | decided to | publish the draft | as it was`,
     question: `Did the novelist use explicit language in the romance book?`,
     question_type: `S2`,
     correct: `yes`
   },
   {
     type: `4`,
-    ID: 40,
+    ID: 44,
     context: `I borrowed | some books | from the library.`,
     trigger: `I returned | all of | them on time.`,
     continuation: `None were | overdue and | I was able to | avoid getting fined.`,
@@ -906,7 +889,7 @@ let raw_filler_trials = [
   },
   {
     type: `4`,
-    ID: 46,
+    ID: 45,
     context: `I tried | three flavors | of ice cream.`,
     trigger: `One | was chocolate, | one | was vanilla, | and one | was mint.`,
     continuation: `The chocolate one | tasted | the best.`,
@@ -916,17 +899,17 @@ let raw_filler_trials = [
   },
   {
     type: `4`,
-    ID: 42,
+    ID: 46,
     context: `On the | nature trail, | I spotted | various animals.`,
     trigger: `Some of them | were deer, | and others | were foxes.`,
     continuation: `I managed | to photograph | only the latter.`,
-    question: `Did I photograph any deer?`,
+    question: `Did I photograph any foxes?`,
     question_type: `S3`,
-    correct: `no`
+    correct: `yes`
   },
   {
     type: `4`,
-    ID: 43,
+    ID: 47,
     context: `During the concert, | the band | played | a total of | 16 songs.`,
     trigger: `They | got a | big round | of applause for | some of | their older songs`,
     continuation: `But the new relases | did not get | very enthusiastic | reactions.`,
@@ -936,9 +919,9 @@ let raw_filler_trials = [
   },
     {
     type: `4`,
-    ID: 37,
+    ID: 48,
     context: `After the | forest fire, | I | conducted an | official survey | of | the damage.`,
-    trigger: `Many  of | the trees | burned down.`,
+    trigger: `Many of | the trees | burned down.`,
     continuation: `Nevertheless, | my data | suggested | the ecosystem would | bounce back.`,
     question: `Do I expect the ecosystem to collapse?`,
     question_type: `S3`,
@@ -947,7 +930,7 @@ let raw_filler_trials = [
 ];
 
 // 2 knowledge conditions: full vs partial
-// 3 continuation conditions: scalar + complement, scalar + cancelation, focused + complement
+// 3 continuation conditions: scalar + complement, scalar + cancellation, focused + complement
 // 24 total vignettes
 // 6 lists
 
@@ -960,10 +943,10 @@ let raw_filler_trials = [
 // B F E A C D
 
 // A = full, scalar + complement
-// B = full, scalar + cancelation
+// B = full, scalar + cancellation
 // C = full, focused + complement
 // D = partial, scalar + complement
-// E = partial, scalar + cancelation
+// E = partial, scalar + cancellation
 // F = partial, focus + complement
 
 const latin_square_lists = [
@@ -976,7 +959,7 @@ const latin_square_lists = [
     {
       context_type: `partial`,
       trigger_type: `scalar`,
-      continuation_type: `cancelation`
+      continuation_type: `cancellation`
     }, // E
     {
       context_type: `partial`,
@@ -986,7 +969,7 @@ const latin_square_lists = [
     {
       context_type: `full`,
       trigger_type: `scalar`,
-      continuation_type: `cancelation`
+      continuation_type: `cancellation`
     }, // B
     {
       context_type: `full`,
@@ -1018,7 +1001,7 @@ const latin_square_lists = [
     {
       context_type: `partial`,
       trigger_type: `scalar`,
-      continuation_type: `cancelation`
+      continuation_type: `cancellation`
     }, // E
     {
       context_type: `partial`,
@@ -1028,7 +1011,7 @@ const latin_square_lists = [
     {
       context_type: `full`,
       trigger_type: `scalar`,
-      continuation_type: `cancelation`
+      continuation_type: `cancellation`
     } // B
   ],
   [
@@ -1040,7 +1023,7 @@ const latin_square_lists = [
     {
       context_type: `full`,
       trigger_type: `scalar`,
-      continuation_type: `cancelation`
+      continuation_type: `cancellation`
     }, // B
     {
       context_type: `partial`,
@@ -1055,7 +1038,7 @@ const latin_square_lists = [
     {
       context_type: `partial`,
       trigger_type: `scalar`,
-      continuation_type: `cancelation`
+      continuation_type: `cancellation`
     }, // E
     {
       context_type: `full`,
@@ -1067,7 +1050,7 @@ const latin_square_lists = [
     {
       context_type: `partial`,
       trigger_type: `scalar`,
-      continuation_type: `cancelation`
+      continuation_type: `cancellation`
     }, // E
     {
       context_type: `partial`,
@@ -1087,7 +1070,7 @@ const latin_square_lists = [
     {
       context_type: `full`,
       trigger_type: `scalar`,
-      continuation_type: `cancelation`
+      continuation_type: `cancellation`
     }, // B
     {
       context_type: `full`,
@@ -1109,7 +1092,7 @@ const latin_square_lists = [
     {
       context_type: `full`,
       trigger_type: `scalar`,
-      continuation_type: `cancelation`
+      continuation_type: `cancellation`
     }, // B
     {
       context_type: `full`,
@@ -1124,14 +1107,14 @@ const latin_square_lists = [
     {
       context_type: `partial`,
       trigger_type: `scalar`,
-      continuation_type: `cancelation`
+      continuation_type: `cancellation`
     } // E
   ],
   [
     {
       context_type: `full`,
       trigger_type: `scalar`,
-      continuation_type: `cancelation`
+      continuation_type: `cancellation`
     }, // B
     {
       context_type: `partial`,
@@ -1141,7 +1124,7 @@ const latin_square_lists = [
     {
       context_type: `partial`,
       trigger_type: `scalar`,
-      continuation_type: `cancelation`
+      continuation_type: `cancellation`
     }, // E
     {
       context_type: `full`,
@@ -1168,11 +1151,11 @@ const latin_square_lists = [
 const create_correct = {
   universal: {
     complement: `no`,
-    cancelation: `yes`
+    cancellation: `yes`
   },
-  negated_existential: {
+  negated_universal: {
     complement: `yes`,
-    cancelation: `no`
+    cancellation: `no`
   }
 };
 
@@ -1180,13 +1163,19 @@ const trial_list = _.flatten(_.sampleSize(latin_square_lists, 4)); // set to 4 f
 
 // fills in a single trial based on context_type, trigger_type and continuation_type
 const create_critical_trial = function (trial, args) {
+  let final_correct_answer = trial.correct;
+  
+  if (trial.correct === 'universal' || trial.correct === 'negated_universal') {
+    final_correct_answer = create_correct[trial.correct][args.continuation_type];
+  }
+  
   return {
     ID: trial.ID,
     type: `critical`,
     knowledge: args.context_type,
     context_type: args.context_type,
     trigger_type: args.trigger_type,
-    continuation_type: args.trigger_type.concat(`-`, args.continuation_type),
+    continuation_type: args.continuation_type,
     context: trial.context[args.context_type],
     trigger: trial.trigger[args.trigger_type],
     continuation: trial.continuation[args.continuation_type],
@@ -1195,10 +1184,7 @@ const create_critical_trial = function (trial, args) {
         ? trial.question
         : trial.question[args.continuation_type],
     question_type: trial.question_type,
-    correct_answer:
-      trial.correct !== 'negated_existential' || trial.correct === 'universal'
-        ? trial.correct
-        : create_correct[trial.correct][args.continuation_type],
+    correct_answer: final_correct_answer,
     option1: 'yes',
     option2: 'no'
   };
@@ -1219,17 +1205,17 @@ const create_filler_trial = function (trial) {
   };
 };
 
-const critical_trials = trial_list.map(function (e) {
+const critical_trials = trial_list.map(function (e, index) {
   let trial = create_critical_trial(
-    raw_critical_trials[_.indexOf(trial_list, e)],
+    raw_critical_trials[index],
     e
   );
   return trial;
 });
 
-const filler_trials = raw_filler_trials.map(function (e) {
+const filler_trials = raw_filler_trials.map(function (e, index) {
   let trial = create_filler_trial(
-    raw_filler_trials[_.indexOf(raw_filler_trials, e)]
+    raw_filler_trials[index]
   );
   return trial;
 });
@@ -1237,3 +1223,5 @@ const filler_trials = raw_filler_trials.map(function (e) {
 var main_trials = _.shuffle([...critical_trials, ...filler_trials]);
 
 export { practice_trials, main_trials };
+
+```
