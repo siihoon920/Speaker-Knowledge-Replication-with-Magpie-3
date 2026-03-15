@@ -37,7 +37,3 @@ Then open the app in your browser at:
 http://localhost:8080/
 ```
 
-## differences from official magpie 3
-In this version, the file `node_modules/magpie-base/src/components/screens/DebugResultsScreen.vue` was modified to fix a bug.
-
-## bugs to be fixed
