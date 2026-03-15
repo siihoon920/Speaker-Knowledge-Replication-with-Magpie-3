@@ -319,6 +319,10 @@ This 4th and final type introduces the same ambiguity as in the critical trials 
 
 Just like in the critical trials, the comprehension questions for filler trials also targeted all three sentences evenly. (16 for S1, 16 for S2 and 16 for S3)
 
+## Attention Checks
+3 Instructional Manipulation Checks(IMCs) were included to ensure the participant is paying attention to the questions. By using a different format of question, these also serve as an attention refresher.
+
+
 # Procedure
 ## Preparation
 
@@ -333,7 +337,7 @@ Just like in the critical trials, the comprehension questions for filler trials 
 
 72 main trials are created by randomly mixing 24 critical trials and 48 filler trials. In the self-paced reading section, the three sentences are presented in blocks of phrases hidden by underlines. Participants press the spacebar to reveal the phrases one by one. Meanwhile, the intervals between presses are recorded, representing the amount of time the participant took to process each block.
 
-Once the participant has seen all the blocks, the participant is presented with the comprehension question, and the participant's answer to the question is recorded.
+Once the participant has seen all the blocks, the participant is presented with the comprehension question, and the participant's answer to the question is recorded. 
 
 ## Personal Information
 Participants can optionally submit their age, gender, and education level.

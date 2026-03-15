@@ -596,7 +596,7 @@ let raw_filler_trials = [
   },
   {
     type: `2_unambiguous`,
-    ID: 14,
+    ID: 13,
     context: `The news | reported on | the recent | stock market crash | in the country.`,
     trigger: `The president | sent out an | important message | to the public.`,
     continuation: `This gave | people the | motivation to | persevere through | the crisis.`,
@@ -606,7 +606,7 @@ let raw_filler_trials = [
   },
   {
     type: `2_unambiguous`,
-    ID: 15,
+    ID: 14,
     context: `I asked | the houskeeper | to count | the supplies | to make sure | nothing | was missing.`,
     trigger: `She | carefully counted | the sheets.`,
     continuation: `She said | we didn't lose | any linen.`,
@@ -616,7 +616,7 @@ let raw_filler_trials = [
   },
   {
     type: `2_unambiguous`,
-    ID: 17,
+    ID: 15,
     context: `We were | on the porch | discussing the price | I would | have to pay.`,
     trigger: `The plumber | remembered | the shower.`,
     continuation: `He had | to replace | some of | the tiles, | which cost | a lot `,
@@ -626,7 +626,7 @@ let raw_filler_trials = [
   },
   {
     type: `2_unambiguous`,
-    ID: 18,
+    ID: 16,
     context: `I heard | the story of | how the | unusual color | scheme on | the painting | came about.`,
     trigger: `The graphic | artist had | to reject | the orange.`,
     continuation: `The paint was | too intense | and did not | suit the mood.`,
@@ -636,7 +636,7 @@ let raw_filler_trials = [
   },
   {
     type: `2_unambiguous`,
-    ID: 19,
+    ID: 17,
     context: `The CEO | updated the | design team | on their | latest collection.`,
     trigger: `The fashion designers | discussed | the cotton.`,
     continuation: `The fabric | was not | what they | had been | hoping for.`,
@@ -646,7 +646,7 @@ let raw_filler_trials = [
   },
   {
     type: `2_unambiguous`,
-    ID: 21,
+    ID: 18,
     context: `While sitting | at my desk, | I got a | question about | some lost stuff.`,
     trigger: `The children | were wondering |about the | tin.`,
     continuation: `The cookie | container was | suddenly nowhere | to be found.`,
@@ -656,7 +656,7 @@ let raw_filler_trials = [
   },
   {
     type: `2_ambiguous`,
-    ID: 22,
+    ID: 19,
     context: `We received | a complaint | from one | of our workers.`,
     trigger: `He complained | in length | about the trunk.`,
     continuation: `The log | was too | large for just | one man | to move.`,
@@ -666,7 +666,7 @@ let raw_filler_trials = [
   },
   {
     type: `2_ambiguous`,
-    ID: 13,
+    ID: 20,
     context: `The village hall | received a | call asking | for help.`,
     trigger: `The villagers | were worried | about the | potential cold. `,
     continuation: `The temperature could | make the | crops freeze.`,
@@ -676,7 +676,7 @@ let raw_filler_trials = [
   },
   {
     type: `2_ambiguous`,
-    ID: 23,
+    ID: 21,
     context: `The critics | discovered | an interesting | cover.`,
     trigger: `And then | they discussed | what was | special about it.`,
     continuation: `The bass line | sounded slightly | different than | in the original.`,
@@ -686,7 +686,7 @@ let raw_filler_trials = [
   },
   {
     type: `2_ambiguous`,
-    ID: 16,
+    ID: 22,
     context: `An old man | bragged | to me | about his success.`,
     trigger: `He seemed to | appreciate his | fortune very much.`,
     continuation: `He was proud | of the | tremendous wealth | that he | had accumulated.`,
@@ -696,7 +696,7 @@ let raw_filler_trials = [
   },
   {
     type: `2_ambiguous`,
-    ID: 24,
+    ID: 23,
     context: `The instructor | showed us | the final | step in | the practical session.`,
     trigger: `She meticulously | tested | the filling.`,
     continuation: `The metal | was covering | the teeth | smooth and evenly.`,
@@ -706,7 +706,7 @@ let raw_filler_trials = [
   },
   {
     type: `2_ambiguous`,
-    ID: 20,
+    ID: 24,
     context: `The experts | warned us about | the danger | of moles.`,
     trigger: `They said | the moles | could take | us over | and cause | serious damage.`,
     continuation: `The spies were | finally caught | after a long | investigation.`,
@@ -726,7 +726,7 @@ let raw_filler_trials = [
   },
   {
     type: `3_unambiguous`,
-    ID: 27,
+    ID: 26,
     context: `The therapist | listened to the | clients’ group | discussion closely.`,
     trigger: `They noticed | his warmth | towards their | emotional struggles.`,
     continuation: `The clients | were appreciative | of the | therapist's help.`,
@@ -736,7 +736,7 @@ let raw_filler_trials = [
   },
   {
     type: `3_unambiguous`,
-    ID: 28,
+    ID: 27,
     context: `The maintenance men | told | the | singer about | a problem.`,
     trigger: `They had | broken his | piano and | would have | to repair | that first.`,
     continuation: `The singer agreed | but asked | for a replacement | keyboard until | the repair is finished.`,
@@ -746,7 +746,7 @@ let raw_filler_trials = [
   },
   {
     type: `3_unambiguous`,
-    ID: 29,
+    ID: 28,
     context: `The principal | carefully went | through the | students' report.`,
     trigger: `She was | disappointed to | see their grades | in science.`,
     continuation: `The principal | decided to | hire new | science teachers.`,
@@ -756,7 +756,7 @@ let raw_filler_trials = [
   },
   {
     type: `3_unambiguous`,
-    ID: 31,
+    ID: 29,
     context: `The crowd | and the author | gathered together | for the fan meeting.`,
     trigger: `They asked her | when the | next release | is scheduled.`,
     continuation: `The author | smiled and | said that | her new novel | would be out | by summer.`,
@@ -766,7 +766,7 @@ let raw_filler_trials = [
   },
   {
     type: `3_unambiguous`,
-    ID: 32,
+    ID: 30,
     context: `The miners | and the geologist | stood at | the cliffside.`,
     trigger: `They examined | his notes | on the | rock strata.`,
     continuation: `The geologist | clarified that | his diagram | indicated | a gold reserve.`,
@@ -776,7 +776,7 @@ let raw_filler_trials = [
   },
   {
     type: `3_ambiguous`,
-    ID: 34,
+    ID: 31,
     context: `The actor | and the agents | arrived at | the venue.`,
     trigger: `They complained | about his | parking spot | being too | far away.`,
     continuation: `The agents said | the actor | should ask | for a reserved | space next time.`,
@@ -786,7 +786,7 @@ let raw_filler_trials = [
   },
   {
     type: `3_ambiguous`,
-    ID: 26,
+    ID: 32,
     context: `The manager | monitored the | waiters' service | throughout the day.`,
     trigger: `He noted | their tone | was consistently | professional.`,
     continuation: `The manager | shared positive | feedback during | the team debrief.`,
@@ -796,7 +796,7 @@ let raw_filler_trials = [
   },
   {
     type: `3_ambiguous`,
-    ID: 35,
+    ID: 33,
     context: `The researcher | and the interns | walked into | the break room.`,
     trigger: `He noticed | their coffee | cups were | still on | the table.`,
     continuation: `The researcher | asked the interns | to clean up | next time.`,
@@ -806,7 +806,7 @@ let raw_filler_trials = [
   },
   {
     type: `3_ambiguous`,
-    ID: 30,
+    ID: 34,
     context: `The director | reviewed the | actors' final | rehearsal footage.`,
     trigger: `She was | impressed by | their enthusiasm | in the climax.`,
     continuation: `The director | extended | their contracts | for the next project.`,
@@ -816,7 +816,7 @@ let raw_filler_trials = [
   },
   {
     type: `3_ambiguous`,
-    ID: 36,
+    ID: 35,
     context: `The journalist | and the | botanists entered | the greenhouse.`,
     trigger: `They noticed | her umbrella | had been | left by the door.`,
     continuation: `The journalist | picked up | the umbrella | and said | she always | forgets it.`,
@@ -826,7 +826,7 @@ let raw_filler_trials = [
   },
   {
     type: `3_ambiguous`,
-    ID: 33,
+    ID: 36,
     context: `The children and | the magician | crowded around | the table.`,
     trigger: `She observed | their faces | carefully during | the card trick.`,
     continuation: `The children's | expressions were | filled with | shock and | the magician smiled | in satisfaction.`,
