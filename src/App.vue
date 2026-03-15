@@ -56,7 +56,7 @@
             :options="[trial.option1, trial.option2]"
             :question="trial.question"
             :response.sync="answer"
-            @update:response="endForcedChoice(trial), ($magpie.measurements.answer==='yes'?$magpie.saveAndNextScreen():$magpie.nextScreen('get_ready'))"
+            @update:response="endSelfPacedReading(trial), endForcedChoice(trial), ($magpie.measurements.answer==='yes'?$magpie.saveAndNextScreen():$magpie.nextScreen('get_ready'))"
           />
         </Slide>
       </Screen>
@@ -66,8 +66,24 @@
         <button @click="$magpie.nextScreen()">BEGIN THE EXPERIMENT </button>
       </Screen>
 
-      <Screen v-for="(trial,i) in main_trials" :progress="i/72">
-        <Slide>
+      <Screen v-for="(trial,i) in main_trials" :progress="i/main_trials.length">
+        <template v-if="trial.type==`IMC`">
+          <Slide>
+            <br/>  
+            <br/>
+            <br/>
+            <p> {{trial.question}}</p>
+            <p>{{trial.context}}</p>
+            <br/>
+            <ForcedChoiceInput
+              :options=trial.options
+              :response.sync="answer"
+              @update:response="endSelfPacedReading(trial), endForcedChoice(trial), $magpie.saveAndNextScreen()"
+            />
+          </Slide>
+        </template>
+        <template v-else>
+          <Slide>
           <br/>
           <br/>
           <br/>
@@ -89,10 +105,11 @@
           <ForcedChoiceInput
           :options="['Yes', 'No']"
           :response.sync="answer"
-          @update:response="endForcedChoice(trial), $magpie.saveAndNextScreen()
-"
+          @update:response="endForcedChoice(trial), $magpie.saveAndNextScreen()"
         />
         </Slide>
+        </template>
+        
         
 
       </Screen>
@@ -112,8 +129,9 @@ import {practice_trials, main_trials} from './trials.js';
 import SelfPacedReadingInput_SpeakerKnowledge from './SelfPacedReadingInput_SpeakerKnowledge.vue';
 import DebugResultsScreen from 'magpie-base/src/components/screens/DebugResultsScreen.vue';
 import SubmitResultsScreen from 'magpie-base/src/components/screens/SubmitResultsScreen.vue';
-import { DropdownInput } from 'magpie-base';
+import { DropdownInput, ForcedChoiceInput } from 'magpie-base';
 import PostTestScreen from 'magpie-base/src/components/screens/PostTestScreen.vue';
+import { isLength } from 'lodash';
 export default {
   name: 'App',
   components: {
