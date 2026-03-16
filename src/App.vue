@@ -24,7 +24,7 @@
       </Screen>
 
       <Screen title="Instructions" label="Instructions">
-        <p>In this experiment, you will read 89 short pieces of text. After each piece of text, you will be asked a question relating to it. Please <strong>read the texts carefully</strong> and answer the question based on your intuitive understanding of the situation described.</p>
+        <p>In this experiment, you will read 72 short pieces of text. After each piece of text, you will be asked a question relating to it. Please <strong>read the texts carefully</strong> and answer the question based on your intuitive understanding of the situation described.</p>
         <p>The texts are presented only piece by piece. To reveal each next part of the sentence, press SPACE. It is very important that you read each newly revealed chunk carefully, and that you try to <strong>understand each new piece of text as it is revealed to you.</strong></p>
         <p>Please do not rush through the text, using memory to recover the meaning of what you read!</p>
         <p>We will start with a few rounds of practice.</p>
