@@ -105,11 +105,15 @@ Regarding the questions about S2 and S3, half of the questions (4 for S2, 4 for 
 
 ```javascript
 question: `Were all the gold watches in the shipment of jewelry fake?`,
-question_type: "S3_scalar" // all are fake
+question_type: "S3_scalar" 
+// If continuation type is complement, not all are fake. -> no
+// If continuation type is cancelation, then all are indeed fake -> yes
 correct: "universal"
 question: `Did the new shipment of jewelry contain gold watches that were real?`,
 question_type: "S3_scalar"
-correct: "negated_universal" // not all are fake
+correct: "negated_universal" 
+// If continuation type is complement, not all are fake. -> answer : yes
+// If continuation type is cancelation, then all are indeed fake -> answer : no
 ```
 <table>
   <thead>
@@ -121,12 +125,12 @@ correct: "negated_universal" // not all are fake
   </thead>
   <tbody>
     <tr>
-      <td><b> confirmation</td>
-      <td> yes</td><td> no </td>
+      <td><b> complement</td>
+      <td> no</td><td> yes </td>
     </tr>
     <tr>
       <td><b> cancelation </td>
-      <td> no</td><td> yes </td>
+      <td> yes</td><td> no </td>
 </table>
 
 To sum up, the distribution of comprehension questions are as below.

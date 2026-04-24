@@ -539,7 +539,7 @@ let raw_filler_trials = [
     ID: 7,
     context: `Ella and Ethan | prepared lunch | in the | kitchen together.`,
     trigger: `One of them | chopped vegetables | while the other | cooked rice.`,
-    continuation: `She offered | him | a spoonful | to taste | and then | she smiled.`,
+    continuation: `He offered | her | a spoonful | of rice | to taste | and then | he smiled.`,
     question: `Did Ella chop vegetables?`,
     question_type: `S2`,
     correct: `yes`
@@ -602,17 +602,17 @@ let raw_filler_trials = [
     continuation: `This gave | people the | motivation to | persevere through | the crisis.`,
     question: `Did the country recently experience a stock market boom?`,
     question_type: `S1`,
-    correct: `no`
+    correct: `no` 
   },
   {
     type: `2_unambiguous`,
     ID: 14,
-    context: `I asked | the houskeeper | to count | the supplies | to make sure | nothing | was missing.`,
+    context: `I asked | the housekeeper | to count | the supplies | to make sure | nothing | was missing.`,
     trigger: `She | carefully counted | the sheets.`,
     continuation: `She said | we didn't lose | any linen.`,
-    question: `Was it a housekeeper that I asked to count the supplies?`,
+    question: `Did the housekeeper voluntarily count the supplies?`,
     question_type: `S1`,
-    correct: `yes`
+    correct: `no`
   },
   {
     type: `2_unambiguous`,
@@ -680,7 +680,7 @@ let raw_filler_trials = [
     context: `The critics | discovered | an interesting | cover.`,
     trigger: `And then | they discussed | what was | special about it.`,
     continuation: `The bass line | sounded slightly | different than | in the original.`,
-    question: `Did the critics think the cover special?`,
+    question: `Did the critics think the cover was special?`,
     question_type: `S2`,
     correct: `yes`
   },
@@ -760,9 +760,9 @@ let raw_filler_trials = [
     context: `The crowd | and the author | gathered together | for the fan meeting.`,
     trigger: `They asked her | when the | next release | is scheduled.`,
     continuation: `The author | smiled and | said that | her new novel | would be out | by summer.`,
-    question: `Is her new release planned for next winter?`,
+    question: `Is her new release planned for next summer?`,
     question_type: `S3`,
-    correct: `no`
+    correct: `yes`
   },
   {
     type: `3_unambiguous`,
@@ -869,7 +869,7 @@ let raw_filler_trials = [
     ID: 40,
     context: `The basketball | player worked on | her 3 point shooting | before the game`,
     trigger: `She made | only some | of the shots.`,
-    continuation: `She decided to | focus on | scoring in the paint | this game.`,
+    continuation: `She decided to | focus on | passing the ball | to her teammates | in this game.`,
     question: `Did the basketball player work on her 3 point shots?`,
     question_type: `S1`,
     correct: `yes`
@@ -1190,7 +1190,7 @@ const raw_IMCs = [
   },
   {
     ID: 3,
-    question: `In the sentence below, please select the person who is asked the question.`,
+    question: `In the sentence below, please select the person who is being asked the question.`,
     text: `Helen asks Anne : "How would my life have looked like if I hadn't met you?"`,
     options : [`Nick`,`Helen`,`Anne`,`Nora`,`Kaitlyn`],
     correct: `Anne`
